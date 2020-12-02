@@ -1,0 +1,17 @@
+<div>
+  <h2>{{question.question}}</h2>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let choice of question.choices"
+        [ngClass]="{'list-group-item-success': grading && question.correct === choice}"
+        [ngClass]="{'list-group-item-danger': grading && question.correct !== choice && answer === choice}">
+      <input id="{{question._id}}_{{choice}}" type="radio" name="{{question._id}}" value="{{choice}}"
+             [(ngModel)]="answer"/>
+      <label for="{{question._id}}_{{choice}}">{{choice}}</label>
+      <i class="fa float-right" [ngClass]="{'fa-check': grading && question.correct === choice}"
+         [ngClass]="{'fa-times': grading && question.correct !== choice && answer === choice}"
+         [hidden]="!grading"></i>
+    </li>
+  </ul>
+  <p> Your Answer: {{answer}}</p>
+  <button class="btn btn-success" (click)="grade()">Grade</button>
+</div>

@@ -15,6 +15,12 @@ import { WidgetListComponent } from './widget-list/widget-list.component';
 import {LessonService} from '../services/LessonService';
 import { CourseTableComponent } from './components/course-table/course-table.component';
 import { CourseViewerComponent } from './components/course-viewer/course-viewer.component';
+import {QuizServiceClient} from '../services/quiz.service.client';
+import {QuestionServiceClient} from '../services/question.service.client';
+import { QuizzesComponent } from './components/quizzes/quizzes.component';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { TrueFalseQuestionComponent } from './components/true-false-question/true-false-question.component';
+import { MultipleChoiceQuestionComponent } from './components/multiple-choice-question/multiple-choice-question.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +32,11 @@ import { CourseViewerComponent } from './components/course-viewer/course-viewer.
     TopicPillsComponent,
     WidgetListComponent,
     CourseTableComponent,
-    CourseViewerComponent
+    CourseViewerComponent,
+    QuizzesComponent,
+    QuizComponent,
+    TrueFalseQuestionComponent,
+    MultipleChoiceQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +44,11 @@ import { CourseViewerComponent } from './components/course-viewer/course-viewer.
     FormsModule
   ],
   providers: [
-    CourseService, ModuleService, LessonService
+    CourseService,
+    ModuleService,
+    LessonService,
+    QuizServiceClient,
+    QuestionServiceClient
   ],
   bootstrap: [AppComponent]
 })

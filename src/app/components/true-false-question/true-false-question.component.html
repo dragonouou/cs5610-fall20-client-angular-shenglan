@@ -1,0 +1,27 @@
+<div>
+  <h2>{{question.question}}</h2>
+  <ul class="list-group">
+    <li class="list-group-item" [ngClass]="{'list-group-item-success': grading && question.correct === 'true'}"
+        [ngClass]="{'list-group-item-danger': grading && question.correct === 'false' && answer === 'true'}">
+      <input id="{{question._id}}_true" type="radio" name="{{question._id}}" value="true" [(ngModel)]="answer"/>
+      <label for="{{question._id}}_true">TRUE</label>
+      <span [ngSwitch]="question.correct">
+        <i class="float-right fa fa-check" [hidden]="!grading" *ngSwitchCase="'true'"></i>
+        <i class="float-right fa fa-times" [hidden]="!grading || answer === 'false' " *ngSwitchCase="'false'"></i>
+      </span>
+
+    </li>
+    <li class="list-group-item" [ngClass]="{'list-group-item-success': grading && question.correct === 'false'}"
+        [ngClass]="{'list-group-item-danger': grading && question.correct === 'true' && answer === 'false'}">
+      <input id="{{question._id}}_false" type="radio" name="{{question._id}}" value="false" [(ngModel)]="answer"/>
+      <label for="{{question._id}}_false">FALSE</label>
+      <span [ngSwitch]="question.correct">
+        <i class="float-right fa fa-check" [hidden]="!grading" *ngSwitchCase="'false'"></i>
+        <i class="float-right fa fa-times" [hidden]="!grading || answer === 'true' " *ngSwitchCase="'true'"></i>
+      </span>
+    </li>
+  </ul>
+  <p> Your Answer: {{answer}}</p>
+  <button class="btn btn-success" (click)="grade()">Grade</button>
+</div>
+
