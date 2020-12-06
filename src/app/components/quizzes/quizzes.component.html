@@ -7,5 +7,6 @@
     <a class="btn btn-primary float-right" routerLink="/courses/{{courseId}}/quizzes/{{quiz._id}}/questions">
       start
     </a>
+    <app-quiz-attempts [quizId] = quiz._id></app-quiz-attempts>
   </li>
 </ul>

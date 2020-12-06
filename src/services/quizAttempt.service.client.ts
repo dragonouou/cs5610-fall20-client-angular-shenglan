@@ -4,12 +4,12 @@ import {Injectable} from '@angular/core';
 const Url = 'http://localhost:3000/api/quizzes';
 
 @Injectable()
-export class QuizServiceClient {
-  findAllQuizzes = () =>
-    fetch(`${Url}`)
+export class QuizAttemptServiceClient {
+  findAttemptsForQuiz = (quizId: string) =>
+    fetch(`${Url}/${quizId}/attempts`)
       .then(response => response.json())
 
-  findQuizById = (qId: any) =>
-    fetch(`${Url}/${qId}`)
+  findAttemptById = (attemptId: string) =>
+    fetch(`http://localhost:3000/api/attempts/${attemptId}`)
       .then(response => response.json())
 }

@@ -10,6 +10,20 @@ import {ActivatedRoute} from '@angular/router';
 export class QuizComponent implements OnInit {
   questions = [];
   quizId = '';
+  grading = false;
+  submitQuiz = () => {
+    this.grading = true;
+    fetch(`http://localhost:3000/api/quizzes/${this.quizId}/attempts`, {
+      method: 'POST',
+      body: JSON.stringify(this.questions),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(result => console.log(result));
+  }
+
   constructor(private svc: QuestionServiceClient,
               private route: ActivatedRoute) { }
   ngOnInit(): void {
