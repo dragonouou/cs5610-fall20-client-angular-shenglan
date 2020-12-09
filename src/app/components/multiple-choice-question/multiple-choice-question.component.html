@@ -1,5 +1,9 @@
 <div>
-  <h2>{{question.question}}</h2>
+  <h2>{{question.question}}
+    <i class="fa" [ngClass]="{'fa-check': grading && question.correct === answer}"
+                               [ngClass]="{'fa-times': grading && question.correct !== answer}"
+                               [hidden]="!grading"></i>
+  </h2>
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let choice of question.choices"
         [ngClass]="{'list-group-item-success': grading && question.correct === choice}"
