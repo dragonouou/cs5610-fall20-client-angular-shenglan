@@ -13,7 +13,7 @@ export class QuizComponent implements OnInit {
   grading = false;
   submitQuiz = () => {
     this.grading = true;
-    fetch(`http://localhost:3000/api/quizzes/${this.quizId}/attempts`, {
+    fetch(`https://cs5610-server-node-shenglan.herokuapp.com/api/quizzes/${this.quizId}/attempts`, {
       method: 'POST',
       body: JSON.stringify(this.questions),
       headers: {
